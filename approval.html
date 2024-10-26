@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approval Script</title>
+</head>
+<body>
+    <h1>Approval Page</h1>
+
+    <p>Apna username aur password daalain:</p>
+
+    <form id="approvalForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br><br>
+
+        <label for="accessType">Access Type:</label>
+        <select id="accessType" required>
+            <option value="">Select Access Type</option>
+            <option value="free">Free</option>
+            <option value="paid">Paid</option>
+        </select><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="message"></div>
+
+    <script>
+        const correctUsername = "GURU";
+        const correctPassword = "GURU12";
+
+        document.getElementById('approvalForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const accessType = document.getElementById('accessType').value;
+
+            if (username === correctUsername && password === correctPassword) {
+                if (accessType === "free") {
+                    document.getElementById('message').innerHTML = 'Aapka free access grant kar diya gaya hai! Agar aapne approval kiya hai, to please <a href="https://wa.me/YourWhatsAppNumber"923309353743" >WhatsApp par contact karein</a> for more details.';
+                } else if (accessType === "paid") {
+                    document.getElementById('message').innerHTML = 'Aapka paid access grant kar diya gaya hai! Agar aapne approval kiya hai, to please <a href="https://wa.me/YourWhatsAppNumber">WhatsApp par contact karein</a> for payments and details.';
+                }
+            } else {
+                document.getElementById('message').innerHTML = 'Galat username ya password! Dobara koshish karein.';
+            }
+        });
+    </script>
+</body>
+                   </html>
